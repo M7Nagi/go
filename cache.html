@@ -1,0 +1,25 @@
+<html manifest="900.cache">
+<head>
+<title> M7NAGI PS4_900 </title>
+
+<link rel="shortcut icon" href="favicon.ico"></link>
+<link rel="stylesheet" href="btn.css">
+<style>
+body{background-image: url('M7N.2');
+color:white;font-size:50px;font-weight:bold;background-size:cover;text-align:center;text-shadow: 4px 4px 4px black;margin:auto;font-family:sans-serif;margin:0;overflow:hidden;}
+.info{position:relative;top:39%;}
+</style>
+<script>
+history.replaceState(null,null,'index.html');var histlength=history.length;history.go(-histlength);
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));msgs.innerHTML="جاري تحميل صفحة التهكير: " + Percent + "%"};
+function DisplayCacheProgress(){
+setTimeout(function(){msgs.innerHTML="✔✔ تم تحميل صفحة التهكير بنجاح ✔✔";},2000);
+setTimeout(function(){location.reload();},3000);
+}
+window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+</head>
+<body style=overflow:hidden>
+<div id=msgs class=info style='-webkit-font-feature-settings:"tnum";font-feature-settings:"tnum";'></div>
+</body>
+</html>

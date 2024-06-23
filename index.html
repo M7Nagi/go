@@ -1,0 +1,64 @@
+<html>
+<head>
+<title> M7NAGI PS4_900 </title>
+<link rel="shortcut icon" href="favicon.ico"></link>
+<link rel="stylesheet" href="btn.css">
+<style>
+body{background-image: url('M7N.2');
+color:white;font-size:50px;font-weight:bold;background-size:cover;text-align:center;text-shadow: 4px 4px 4px black;margin:auto;font-family:sans-serif;margin:0;overflow:hidden;}
+.info{position:relative;top:25%;}
+</style>
+</head>
+<body onload="setTimeout(webkitXploit, 1500);">
+<script src="exploit.js"></script>
+<div id="msgs" class="info">.... يتم الآن تفعيل التهكير يرجى الانتظار</div>
+
+
+
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+</script>
+
+<script>
+ PLfile = "goldhen.bin";
+ function load_pocB(){
+ var req = new XMLHttpRequest();
+ req.responseType = "arraybuffer";
+ req.open('GET', PLfile);
+ req.send();
+ req.onreadystatechange = function () {
+  if (req.readyState == 4) {
+   PLD = req.response;
+   var payload_buffer = chain.syscall(477, 0, PLD.byteLength*4 , 7, 0x1002, -1, 0);
+   var pl = p.array_from_address(payload_buffer, PLD.byteLength*4);
+   var padding = new Uint8Array(4 - (req.response.byteLength % 4) % 4);
+   var tmp = new Uint8Array(req.response.byteLength + padding.byteLength);
+   tmp.set(new Uint8Array(req.response), 0);
+   tmp.set(padding, req.response.byteLength);
+   var shellcode = new Uint32Array(tmp.buffer);
+   pl.set(shellcode,0);
+   var pthread = p.malloc(0x10);
+   chain.call(libKernelBase.add32(OFFSET_lk_pthread_create), pthread, 0x0, payload_buffer, 0);
+   allset();
+  }
+ };
+}
+function jbdone() {
+window.progress.innerHTML="✔✔ تم تفعيل التهكير بنجاح.. اخرج الفلاش الان ✔✔";
+goldhen();
+}
+function goldhen(){
+    progress.innerHTML=".... يتم الآن تفعيل التهكير يرجى الانتظار";
+    load_pocB();
+}
+        function allset() 
+        {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("allset").style.display = "block";
+        }
+</script>
+
+
+
+</body>
+</html>
