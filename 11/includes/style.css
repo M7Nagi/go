@@ -1,5 +1,5 @@
 body {
-    background: #111111;
+    background: #000000;
     color: #dddddd;
     margin: 0;
     padding: 20px;
@@ -7,13 +7,13 @@ body {
 }
 
 h1 {
-    color: #ffffff;
+    color: #fdd900;
     font-size: 28px;
     margin: 10px 0 5px 0;
 }
 
 h3 {
-    color: #aaaaaa;
+    color: #fdd900;
     font-size: 14px;
     font-weight: normal;
     margin: 0 0 15px 0;
@@ -31,7 +31,7 @@ hr {
 }
 
 button {
-    background: #2563eb;
+    background: #fe0000;
     color: #ffffff;
     border: none;
     padding: 12px 35px;
